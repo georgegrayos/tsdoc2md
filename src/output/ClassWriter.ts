@@ -12,17 +12,19 @@ export class ClassWriter {
     var str = "";
     // class name
     str += `# ${this._document.name}\n`;
-
+    
     // constructor
     if (this._document.constructorP) {
       str += "## Constructor\n";
       str += `\`\`\`ts\n${this._document.constructorP.code}\n\`\`\`\n`;
       // example
+      
       if (this._document.constructorP.example) {
         str += "#### Example\n";
         str += `${this._document.constructorP.example.content}\n`;
       }
-
+      
+    }
       // property
       str += "## Properties\n";
       this._document.properties.forEach(item => {
@@ -45,14 +47,17 @@ export class ClassWriter {
             } |\n`;
           });
         }
+        
         // example
         if (item.example) {
           str += "#### Example\n";
           str += `${item.example.content}\n`;
         }
       });
+      
       FS.writeFileSync(filePath, str, { flag: "a" });
       // console.log(str);
-    }
+    
+    
   }
 }
