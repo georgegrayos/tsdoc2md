@@ -38,7 +38,8 @@ try {
   if (!FS.existsSync(markdownDir)) {
     FS.mkdirSync(markdownDir);
   }
-  const markdownFilePath = path.join(markdownDir, `${markdownName}.md`);
+
+  const markdownFilePath = path.join(markdownDir, `${path.parse(markdownName).name}.md`);
   // 移除旧文件
   if (FS.existsSync(markdownFilePath)) {
     FS.unlinkSync(markdownFilePath)

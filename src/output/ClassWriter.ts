@@ -29,16 +29,17 @@ export class ClassWriter {
       str += "## Properties\n";
       this._document.properties.forEach(item => {
         str += `### ${item.name}\n`;
-        str += `#### ${item.title.content}\n`;
+        str += `${item.title.content}\n`;
         str += `\`\`\`ts\n${item.code}\n\`\`\`\n`;
       });
       str += "## Methods\n";
       this._document.methods.forEach(item => {
         str += `### ${item.name}\n`;
-        str += `#### ${item.title.content}\n`;
+        str += `${item.title.content}\n`;
         str += `\`\`\`ts\n${item.code}\n\`\`\`\n`;
         // param
         if (item.parameters.length) {
+          str += "\n";
           str += `| Name | Type   | Description |\n`;
           str += `| ---- | ------ | ----------- |\n`;
           item.parameters.forEach((param: DocNodeParameter) => {
@@ -46,6 +47,7 @@ export class ClassWriter {
               param.description
             } |\n`;
           });
+          str += "\n";
         }
         
         // example
